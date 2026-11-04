@@ -1,12 +1,14 @@
 import os
 import numpy as np
 import pandas as pd
+from pathlib import Path
 from sklearn.metrics import mean_absolute_error, f1_score, roc_auc_score
 from sklearn.linear_model import Ridge, LogisticRegression
 from sklearn.ensemble import RandomForestClassifier
 
 # Path to real CSV directory
-DATA_DIR = os.path.join(".", "ac", "hockey_development_data", "hockey_development_data")
+BASE_DIR = Path(__file__).resolve().parent
+DATA_DIR = BASE_DIR / "hockey_development_data" / "hockey_development_data"
 
 def load_and_preprocess_raw_data(data_dir):
     """Loads CSV files and enforces clean numeric data types."""
