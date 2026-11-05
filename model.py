@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import argparse
 from pathlib import Path
-
+    
 import pandas as pd
 
 
@@ -197,12 +197,12 @@ def classification_metrics(
 
 
 def report(predictions: pd.DataFrame, year: int) -> None:
-    """Print rankings, coaching sets, and compact metric comparisons."""
+    """Print only predictions and the minimum baseline comparison."""
     print(f"\nSeason {year}")
     print("\nRanking")
     print(
         predictions[
-            ["tmID", "actual_rank", "baseline_rank", "simple_rank"]
+            ["tmID", "actual_rank", "simple_rank"]
         ]
         .sort_values("actual_rank")
         .to_string(index=False)
@@ -223,40 +223,33 @@ def report(predictions: pd.DataFrame, year: int) -> None:
     print("\nCoaching changes")
     print(f"Actual:    {actual_changes}")
     print(f"Predicted: {predicted_changes}")
-    print("Baseline:  []")
 
-    print("\nComparison with baselines")
-    baseline_mae, baseline_rho = rank_metrics(
+    print("\nBaseline comparison")
+    baseline_mae, _ = rank_metrics(
         predictions,
         "baseline_rank",
     )
-    simple_mae, simple_rho = rank_metrics(
+    simple_mae, _ = rank_metrics(
         predictions,
         "simple_rank",
     )
     print(
-        f"Ranking MAE:       baseline={baseline_mae:.3f}, "
-        f"simple={simple_mae:.3f}"
-    )
-    print(
-        f"Ranking Spearman:   baseline={baseline_rho:.3f}, "
-        f"simple={simple_rho:.3f}"
+        f"Average ranking error: baseline={baseline_mae:.3f}, "
+        f"prediction={simple_mae:.3f}"
     )
 
-    for label, column in [
-        ("Baseline", "baseline_coach_change"),
-        ("Simple rule", "simple_coach_change"),
-    ]:
-        precision, recall, f1 = classification_metrics(
-            predictions,
-            column,
-        )
-        print(
-            f"{label} coaching metrics: "
-            f"precision={precision:.3f}, "
-            f"recall={recall:.3f}, "
-            f"F1={f1:.3f}"
-        )
+    _, _, baseline_f1 = classification_metrics(
+        predictions,
+        "baseline_coach_change",
+    )
+    _, _, simple_f1 = classification_metrics(
+        predictions,
+        "simple_coach_change",
+    )
+    print(
+        f"Coaching prediction F1: baseline={baseline_f1:.3f}, "
+        f"prediction={simple_f1:.3f}"
+    )
 
 
 def main() -> None:
