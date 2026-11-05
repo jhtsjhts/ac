@@ -14,7 +14,7 @@
 | 1932-1934 | 9 |
 | 1935-1937 | 8 |
 | 1938-1941 | 7 |
-| 1942-1966 | 6 (the "Original Six" era) |
+| 1942-1966 | 6 |
 | 1967-1969 | 12 |
 | 1970-1971 | 14 |
 | 1972-1973 | 16 |
@@ -26,13 +26,13 @@
 | 1993-1997 | 26 |
 | 1998 | 27 |
 | 1999 | 28 |
-| 2000-2009 | 30 |
+| 2000-2003, 2005-2009 | 30 |
 
 ## 2. Games per season
 
 | Years | Games |
 |---|---|
-| 1917 | 22 (one team played only 6) |
+| 1917 | 22 |
 | 1918 | 18 |
 | 1919-1923 | 24 |
 | 1924 | 30 |
@@ -47,17 +47,16 @@
 | 1970-1973 | 78 |
 | 1974-1991 | 80 |
 | 1992-1993 | 84 |
-| 1994 | 48 (lockout) |
+| 1994 | 48 |
 | 1995-2009 | 82 |
 
-Consequence: `Pts`, `W`, `GF` and `GA` must be normalised per game before comparing seasons.
 
 ## 3. Teams that made the playoffs
 
 | Years | Playoff teams |
 |---|---|
 | 1917-1918 | 2 |
-| 1919 | 1 (finals halted by the influenza epidemic, no Cup winner) |
+| 1919 | 1 (finals halted) |
 | 1920-1923 | 2 |
 | 1924-1925 | 3 |
 | 1926-1941 | 6 |
@@ -76,8 +75,7 @@ Consequence: `Pts`, `W`, `GF` and `GA` must be normalised per game before compar
 | 2004 | No season |
 | 2005-2009 | No ties; shootouts (`SoW`, `SoL`) appear; about 270-300 overtime losses per season |
 
-- *(Background)* A regular-season overtime period was introduced around 1983, but a tie was still possible.
-- Consequence: `T`, `OTL`, `SoW` and `SoL` are structurally missing or zero depending on the era. They are not data errors.
+- A regular-season overtime period was introduced around 1983, but a tie was still possible.
 
 ## 5. Goals per team per game, every season
 
@@ -95,10 +93,9 @@ Consequence: `Pts`, `W`, `GF` and `GA` must be normalised per game before compar
 | 1980-1985 | 3.84, 4.01, 3.86, 3.94, 3.89, 3.97 | Peak (4.01 in 1981) |
 | 1986-1992 | 3.67, 3.71, 3.74, 3.68, 3.46, 3.48, 3.63 | Declining |
 | 1993-1998 | 3.24, 2.99, 3.14, 2.92, 2.64, 2.63 | Sharp drop |
-| 1999-2003 | 2.75, 2.76, 2.62, 2.65, 2.57 | "Dead puck era" (low point 2.57 in 2003) |
+| 1999-2003 | 2.75, 2.76, 2.62, 2.65, 2.57 |
 | 2005-2009 | 3.08, 2.95, 2.78, 2.91, 2.84 | After the lockout |
 
-- *(Background)* Defensive trapping systems and larger goalie equipment explain the 1996-2003 drop. After the lockout, rule changes (obstruction calls, removing the two-line pass, goalie equipment limits) aimed to raise scoring.
 
 ## 6. Conferences and divisions in the data
 
@@ -121,8 +118,6 @@ Consequence: `Pts`, `W`, `GF` and `GA` must be normalised per game before compar
 | 1926-1937 | Rank within a division |
 | 1938-1966 | Whole-league rank |
 | 1967-2003, 2005-2009 | Rank within a division |
-
-Consequence: from 1967 onward, `rank` cannot be used directly as target (a). A league-wide order must be built from points.
 
 ## 8. Economics and players *(background)*
 
